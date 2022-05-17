@@ -122,11 +122,9 @@ def draw(canvas):
     canvas.draw_circle((ball_pos), BALL_RADIUS, 2, 'RED', 'White')
 
    # update paddle's position
-#    paddle1_pos[0][1] += paddles1_vel
-#    paddle1_pos[1][1] += paddles1_vel
+    paddle1_pos += paddles1_vel    
+    paddle2_pos += paddles2_vel 
     
-#    paddle2_pos[0][1] += paddles2_vel 
-#    paddle2_pos[1][1] += paddles2_vel
 
    # draw paddles
     # paddle1 left
