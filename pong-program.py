@@ -87,19 +87,19 @@ def draw(canvas):
   
     #left wall 
     
-    elif ball_pos[0] <= BALL_RADIUS:
-        #new_game()
+    elif ball_pos[0] <= 0+BALL_RADIUS:
+       # new_game()
         ball_vel[0] = - ball_vel[0]
-        #if ball_pos[0] >= paddle1_pos[0][1] and ball_pos[1] <= paddle1_pos[1][1]:
+       # if ball_pos[0] >= paddle1_pos and ball_pos[1] <= paddle1_pos:
         #    print "hit paddle"
         #else:
-        #    new_game
+         #   new_game
             
     #right wall
     
     elif ball_pos[0] >= WIDTH - BALL_RADIUS:
         #new_game()
-        #if ball_pos[0] >= paddle2_pos[0][1] and ball_pos[1] <= paddle2_pos[1][1]:
+        #if ball_pos[0] >= paddle2_pos and ball_pos[1] <= paddle2_pos:
         ball_vel[0] = - ball_vel[0]
         #    print "hit paddle"
         #else:
@@ -107,23 +107,29 @@ def draw(canvas):
  
    #keep paddle on the screen
             
-#    elif paddle2_pos[1][1] >= HALF_PAD_HEIGHT :
-#         paddle2_pos + paddles2_vel
-    #elif paddle2_pos[0][1] <= 0:
-#         paddle2_pos + paddles2_vel
+    if paddle2_pos >= HALF_PAD_HEIGHT:
+        if paddle2_pos + paddles2_vel <= HALF_PAD_HEIGHT:
+            paddle2_pos = HALF_PAD_HEIGHT
+        else:
+            if paddle2_pos + HALF_PAD_HEIGHT + paddles2_vel <= HEIGHT:
+                paddle2_pos += paddles2_vel
             
-    #elif paddle1_pos[1][1] >= HEIGHT:
-#         paddle1_pos + paddles1_vel
+
             
-    #elif paddle1_pos[0][1] <= 0:
-#         paddle1_pos + paddles1_vel 
+    if paddle1_pos >= HALF_PAD_HEIGHT:
+        if paddle1_pos + paddles1_vel <= HALF_PAD_HEIGHT:
+            paddle1_pos = HALF_PAD_HEIGHT
+        else:    
+            if paddle1_pos + HALF_PAD_HEIGHT + paddles1_vel <= HEIGHT:
+                paddle1_pos += paddles1_vel
+             
             
    # draw ball
     canvas.draw_circle((ball_pos), BALL_RADIUS, 2, 'RED', 'White')
 
    # update paddle's position
-    paddle1_pos += paddles1_vel    
-    paddle2_pos += paddles2_vel 
+#    paddle1_pos += paddles1_vel    
+#    paddle2_pos += paddles2_vel 
     
 
    # draw paddles
