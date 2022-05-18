@@ -21,8 +21,6 @@ score2 = 0
 paddles2_vel = 0
 paddles1_vel = 0
 re_start = [WIDTH / 2, HEIGHT  / 2]
-#paddle1_pos = [[4,100],[4,200]]
-#paddle2_pos = [[596,100],[596,200]]
 paddle2_pos = HEIGHT / 2
 paddle1_pos = HEIGHT / 2
 
@@ -81,23 +79,23 @@ def draw(canvas):
         
     #uper wall
     
-    elif ball_pos[1] <= 0 + BALL_RADIUS:
+    if ball_pos[1] <= 0 + BALL_RADIUS:
         ball_vel[1] = - ball_vel[1]
         
   
     #left wall 
     
-    elif ball_pos[0] <= 0+BALL_RADIUS:
-       # new_game()
-        ball_vel[0] = - ball_vel[0]
-       # if ball_pos[0] >= paddle1_pos and ball_pos[1] <= paddle1_pos:
-        #    print "hit paddle"
-        #else:
-         #   new_game
-            
-    #right wall
+    if ball_pos[0] <= 0 + BALL_RADIUS:
+        if ball_pos[0] == paddle1_pos+HALF_PAD_HEIGHT-BALL_RADIUS:
+            ball_vel[0] = - ball_vel[0]
+            print "yes!!!"
+        else:
+            new_game()
+            print "no!!!!"
+   
+     #right wall
     
-    elif ball_pos[0] >= WIDTH - BALL_RADIUS:
+    if ball_pos[0] >= WIDTH - BALL_RADIUS:
         #new_game()
         #if ball_pos[0] >= paddle2_pos and ball_pos[1] <= paddle2_pos:
         ball_vel[0] = - ball_vel[0]
@@ -127,22 +125,19 @@ def draw(canvas):
    # draw ball
     canvas.draw_circle((ball_pos), BALL_RADIUS, 2, 'RED', 'White')
 
-   # update paddle's position
-#    paddle1_pos += paddles1_vel    
-#    paddle2_pos += paddles2_vel 
-    
-
    # draw paddles
-    # paddle1 left
+    
+   # paddle1 left
     canvas.draw_line((HALF_PAD_WIDTH,paddle1_pos-HALF_PAD_HEIGHT),(HALF_PAD_WIDTH,paddle1_pos+HALF_PAD_HEIGHT), PAD_WIDTH, "White")  
-    # paddle2 right
+    
+   # paddle2 right
     canvas.draw_line((WIDTH-HALF_PAD_WIDTH,paddle2_pos-HALF_PAD_HEIGHT),(WIDTH-HALF_PAD_WIDTH,paddle2_pos+HALF_PAD_HEIGHT),PAD_WIDTH,"White")
                     
    # determine whether paddle and ball collide    
     
    # draw scores
-    canvas.draw_text(str(score2), (140, 100), 50, 'blue')
-    canvas.draw_text(str(score1), (425, 100), 50, 'red')
+    canvas.draw_text(str(score2), (140, 100), 50, 'blue') #left
+    canvas.draw_text(str(score1), (425, 100), 50, 'red')  #right
         
     
 def keydown(key):
