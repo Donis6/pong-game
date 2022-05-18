@@ -85,8 +85,8 @@ def draw(canvas):
   
     #left wall 
     
-    if ball_pos[0] <= 0 + BALL_RADIUS:
-        if ball_pos[0] == paddle1_pos+HALF_PAD_HEIGHT-BALL_RADIUS:
+    if ball_pos[0] <= BALL_RADIUS:
+        if ball_pos[1] <= paddle1_pos + HALF_PAD_HEIGHT - BALL_RADIUS and ball_pos[1] >= paddle1_pos - HALF_PAD_HEIGHT - BALL_RADIUS:
             ball_vel[0] = - ball_vel[0]
             print "yes!!!"
         else:
