@@ -88,22 +88,20 @@ def draw(canvas):
     if ball_pos[0] <= BALL_RADIUS:
         if ball_pos[1] <= paddle1_pos + HALF_PAD_HEIGHT - BALL_RADIUS and ball_pos[1] >= paddle1_pos - HALF_PAD_HEIGHT - BALL_RADIUS:
             ball_vel[0] = - ball_vel[0]
-            print "yes!!!"
         else:
             new_game()
-            print "no!!!!"
+            score2 = score2 + 1
    
      #right wall
     
     if ball_pos[0] >= WIDTH - BALL_RADIUS:
         if ball_pos[1] <= paddle2_pos + HALF_PAD_HEIGHT - BALL_RADIUS and ball_pos[1] >= paddle2_pos - HALF_PAD_HEIGHT - BALL_RADIUS:
             ball_vel[0] = - ball_vel[0]
-            print "yes2!!!"
         else:
             new_game()
-            print "no2!!!!"
+            score1 = score1 + 1
  
-   #keep paddle on the screen
+   #keep paddle's on the screen
             
     if paddle2_pos >= HALF_PAD_HEIGHT:
         if paddle2_pos + paddles2_vel <= HALF_PAD_HEIGHT:
@@ -126,18 +124,15 @@ def draw(canvas):
     canvas.draw_circle((ball_pos), BALL_RADIUS, 2, 'RED', 'White')
 
    # draw paddles
-    
    # paddle1 left
     canvas.draw_line((HALF_PAD_WIDTH,paddle1_pos-HALF_PAD_HEIGHT),(HALF_PAD_WIDTH,paddle1_pos+HALF_PAD_HEIGHT), PAD_WIDTH, "White")  
     
    # paddle2 right
-    canvas.draw_line((WIDTH-HALF_PAD_WIDTH,paddle2_pos-HALF_PAD_HEIGHT),(WIDTH-HALF_PAD_WIDTH,paddle2_pos+HALF_PAD_HEIGHT),PAD_WIDTH,"White")
-                    
-   # determine whether paddle and ball collide    
+    canvas.draw_line((WIDTH-HALF_PAD_WIDTH,paddle2_pos-HALF_PAD_HEIGHT),(WIDTH-HALF_PAD_WIDTH,paddle2_pos+HALF_PAD_HEIGHT),PAD_WIDTH,"White")   
     
    # draw scores
-    canvas.draw_text(str(score2), (140, 100), 50, 'blue') #left
-    canvas.draw_text(str(score1), (425, 100), 50, 'red')  #right
+    canvas.draw_text(str(score1), (140, 100), 50, 'blue') #left
+    canvas.draw_text(str(score2), (425, 100), 50, 'red')  #right
         
     
 def keydown(key):
@@ -169,15 +164,12 @@ def keyup(key):
         
     elif key == simplegui.KEY_MAP["down"]:
         paddles2_vel = 0
-    
- #score ######################
- 
-def poits():
-    global paddle1_pos, paddle2_pos,  paddle1_vel,  paddle2_vel, score1, score2
-       
+      
 # Restart button
 def restart():
     new_game()
+    score1 = 0
+    score2 = 0
     
 # create frame
 frame = simplegui.create_frame("Pong", WIDTH, HEIGHT)
