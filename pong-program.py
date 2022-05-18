@@ -96,12 +96,12 @@ def draw(canvas):
      #right wall
     
     if ball_pos[0] >= WIDTH - BALL_RADIUS:
-        #new_game()
-        #if ball_pos[0] >= paddle2_pos and ball_pos[1] <= paddle2_pos:
-        ball_vel[0] = - ball_vel[0]
-        #    print "hit paddle"
-        #else:
-        #    new_game()
+        if ball_pos[1] <= paddle2_pos + HALF_PAD_HEIGHT - BALL_RADIUS and ball_pos[1] >= paddle2_pos - HALF_PAD_HEIGHT - BALL_RADIUS:
+            ball_vel[0] = - ball_vel[0]
+            print "yes2!!!"
+        else:
+            new_game()
+            print "no2!!!!"
  
    #keep paddle on the screen
             
