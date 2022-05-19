@@ -2,7 +2,6 @@
 
 import simplegui
 import random
-
 # initialize globals - pos and vel encode vertical info for paddles
 WIDTH = 600
 HEIGHT = 400       
@@ -164,9 +163,10 @@ def keyup(key):
         
     elif key == simplegui.KEY_MAP["down"]:
         paddles2_vel = 0
-      
+
 # Restart button
 def restart():
+    global score1, score2
     new_game()
     score1 = 0
     score2 = 0
