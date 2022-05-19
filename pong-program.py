@@ -85,7 +85,7 @@ def draw(canvas):
     #left wall 
     
     if ball_pos[0] <= BALL_RADIUS:
-        if ball_pos[1] <= paddle1_pos + HALF_PAD_HEIGHT - BALL_RADIUS and ball_pos[1] >= paddle1_pos - HALF_PAD_HEIGHT - BALL_RADIUS:
+        if ball_pos[1] <= paddle1_pos + HALF_PAD_HEIGHT and ball_pos[1] >= paddle1_pos - HALF_PAD_HEIGHT:
             ball_vel[0] = - ball_vel[0]
         else:
             new_game()
@@ -94,7 +94,7 @@ def draw(canvas):
      #right wall
     
     if ball_pos[0] >= WIDTH - BALL_RADIUS:
-        if ball_pos[1] <= paddle2_pos + HALF_PAD_HEIGHT - BALL_RADIUS and ball_pos[1] >= paddle2_pos - HALF_PAD_HEIGHT - BALL_RADIUS:
+        if ball_pos[1] <= paddle2_pos + HALF_PAD_HEIGHT and ball_pos[1] >= paddle2_pos - HALF_PAD_HEIGHT:
             ball_vel[0] = - ball_vel[0]
         else:
             new_game()
